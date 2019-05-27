@@ -18,17 +18,20 @@
 		htmlnano = r('gulp-htmlnano'),
 		gcmq = r('gulp-group-css-media-queries'),
 		plumber = r('gulp-plumber'),
-		rigger = require('gulp-rigger');
-	const webp = require('gulp-webp');
+		changed = r('gulp-changed'),
+		rigger = r('gulp-rigger'),
+		webp = require('gulp-webp');
 	// var options = {
 	// 	removeComments: false
 	// };
 
-
+	// const SRC = 'src/*.js';
+	// const DEST = 'dist';
 
 	// this start tasks for developer///////////////////////////////
 	gulp.task('css', () => {
 		return gulp.src('developer/scss/all.scss')
+			.pipe(changed('production/css'))
 			.pipe(plumber())
 			.pipe(scss())
 			.pipe(filesize({
@@ -52,6 +55,7 @@
 	});
 	gulp.task('img_min', () =>
 		gulp.src('developer/img/*')
+		.pipe(changed('production/img'))
 		.pipe(filesize({
 			title: 'before',
 			showFiles: true
@@ -72,6 +76,7 @@
 
 	gulp.task('html_include', () => {
 		return gulp.src(['developer/html/index.html'])
+			.pipe(changed('developer'))
 			.pipe(plumber())
 			.pipe(html_include({
 				prefix: '@!',
@@ -82,6 +87,7 @@
 	gulp.task('html_min', () => {
 		return gulp
 			.src('developer/index.html')
+			.pipe(changed('production'))
 			.pipe(plumber())
 			// .pipe(sourcemaps.init())
 			.pipe(filesize({
@@ -106,6 +112,7 @@
 	//   });
 	gulp.task('before_js_in_production', () => {
 		return gulp.src('./developer/js/library_js/library/*.js')
+			.pipe(changed('developer/js'))
 			.pipe(concat('conected.js'))
 			.pipe(gulp.dest('developer/js'))
 			.pipe(filesize({
@@ -116,6 +123,7 @@
 
 	gulp.task('before_2_js_in_production', () => {
 		return gulp.src('./developer/js/library_js/main.js')
+			.pipe(changed('developer/js'))
 			.pipe(filesize({
 				title: 'before',
 				showFiles: true
@@ -131,6 +139,7 @@
 	});
 	gulp.task('js', () => {
 		return gulp.src('developer/js/*.js')
+			.pipe(changed('production/js'))
 			.pipe(plumber())
 			.pipe(concat('main.js'))
 			// .pipe(sourcemaps.init())
@@ -153,7 +162,9 @@
 		watch('developer/js/library_js/main.js');
 		watch('developer/js/main.js');
 		watch('developer/index.html');
-		// watch('developer/fav.ico');
+		watch('developer/fonts');
+		watch('developer/img/*');
+		watch('developer/fonts/*');
 
 		gulp.watch('developer/html/**/*.html', ['html_include']);
 		gulp.watch('developer/scss/**/*.scss', ['css']);
@@ -162,7 +173,9 @@
 		gulp.watch('developer/js/library_js/main.js', ['before_2_js_in_production']);
 		gulp.watch('developer/js/main.js', ['js']);
 		gulp.watch('developer/index.html', ['html_min']);
-		// gulp.watch('developer/fav.ico', ['transfer_favicon']);
+		gulp.watch('developer/fonts', ['transfer_fonts']);
+		gulp.watch('developer/img/*', ['img_min']);
+		gulp.watch('developer/fonts/*', ['transfer_fonts']);
 
 		// watch('developer/css/all.css');
 		// watch('developer/js/library_js/*.js');
@@ -170,19 +183,21 @@
 		// gulp.watch('developer/js/library_js/*.js', ['concat_js']);
 	});
 	// this end tasks for developer////////////////////////////////
-	gulp.task('transfer_file', function () {
-		gulp.src(['developer/fonts/*.ttf', 'developer/fonts/*.wolf'])
-			.pipe(rigger())
-			.pipe(gulp.dest('production/fonts/'));
-	});
-	gulp.task('transfer_favicon', function () {
-		gulp.src('developer/fav.ico')
+	gulp.task('transfer_fonts', () => {
+		gulp.src('developer/fonts/*')
+			.pipe(changed('production'))
 			.pipe(rigger())
 			.pipe(gulp.dest('production'));
 	});
-	gulp.task('default', ['html_include', 'watch', 'css', 'before_js_in_production', 'before_2_js_in_production']);
+	gulp.task('transfer_favicon', () => {
+		gulp.src('developer/fav.ico')
+			.pipe(changed('production'))
+			.pipe(rigger())
+			.pipe(gulp.dest('production'));
+	});
+	gulp.task('default', ['html_include', 'watch', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'img_min', 'transfer_favicon']);
 	// gulp.task('default', ['scss', 'watch', 'html_include','concat_js','autoprefixer']);
 	// потомучто не требуется каждый раз переуменьшать картинки и 
-	// gulp.task('default', ['img_min']);
+	// gulp.task('default', ['img_min',transfer_favicon']);
 
 })(require);
