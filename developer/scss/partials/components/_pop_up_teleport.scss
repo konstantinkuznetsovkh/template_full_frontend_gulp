@@ -1,0 +1,66 @@
+// start pop_up_teleport/////////////////////////////////////////////////////////////////////////////////////
+#pop_up_teleport {
+    background: rgba(2, 41, 5, 0.25);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    transition: all .05s linear;
+    visibility: hidden;
+    opacity: 0;
+
+    div {
+        box-shadow: 0 0 20px 2px rgba(0, 0, 0, .2);
+        position: fixed;
+        bottom: 3vh;
+        right: 2vw;
+        display: inline-block;
+        padding: 2%;
+        box-sizing: border-box;
+        background: rgb(255, 255, 255);
+        border-radius: 7px;
+        border: 2px solid rgb(0, 0, 0);
+        z-index: 9998;
+        opacity: 0;
+        transition: all 1s linear;
+
+        &:before {
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 28px solid #fff;
+            content: "";
+            position: absolute;
+            bottom: -23px;
+            left: 5%;
+            z-index: 9997;
+            width: 0;
+            height: 0;
+        }
+
+        &:after {
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 25px solid #000;
+            content: "";
+            position: absolute;
+            bottom: -26px;
+            left: 5%;
+            z-index: 9996;
+            width: 0;
+            height: 0;
+        }
+
+        p {
+            font-size: 19px;
+            text-align: center;
+        }
+    }
+}
+
+#button_pop_up_teleport {
+    background: plum;
+}
+
+// end pop_up_teleport//////////////////////////////////////////////////////////////////////////////////////

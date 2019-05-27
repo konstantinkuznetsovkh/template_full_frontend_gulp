@@ -1,0 +1,77 @@
+//layout variadles
+$wdi: 1206px;
+/*width-desktop-infinite1452*/
+//$wdl: 978px;  /*width-desktop-less*/
+$wt: 640px;
+/*width-tablet*/
+$wmb: 480px;
+/*width-mobile*/
+$wms: 320px;
+/*media*/
+$desktop-infinite: "(min-width:1367px) and (max-width:1920px)"; //$desktop-less: "(max-width: 1366px)";
+$tablet: "(min-width:769px) and (max-width: 1366px)"; // $tablet: "(max-width: 978px)";
+$mobile-big: "(max-width: 768px)";
+$mobile-small: "(max-width: 540px)"; // @media (min-width: 1218px) and (max-width: 10000px)
+
+/*usage: */
+.layout {
+  width: $wdi;
+  position: relative;
+  margin: 0 auto;
+
+  @media #{$desktop-infinite} {
+    width: $wdi;
+  }
+
+  // @media #{$desktop-less} {
+  //     width: $wdl;
+  // }
+  @media #{$tablet} {
+    width: $wt;
+  }
+
+  @media #{$mobile-big} {
+    width: $wmb;
+  }
+
+  @media #{$mobile-small} {
+    width: $wms;
+  }
+}
+
+/****************************************************************              PC              ***************************************************/
+// @media (min-width: 978px) and (max-width: 1217px) {}
+// /****************************************************************              TABLET              ***********************************************/
+// @media (min-width: 768px) and (max-width: 977px) {
+// 	.layout {
+// 		margin:0 auto;
+// 		position:relative;
+// 		width:768px;
+// 	}
+// }
+/****************************************************************              MOBILE              ***********************************************/
+// @media (min-width: 320px) and (max-width:767px) {
+// 	.layout {
+// 		width:100%;
+// 		padding:0;
+// 	}
+// }
+/*@media*/
+
+/* @media (min-width: 1921px){} 													QHD \ UHD
+@media (min-width: 1600px) and (max-width: 1919px) {}	HD +
+@media (min-width: 1440px) and (max-width: 1599px) {}	macbook
+@media (min-width: 1360px) and (max-width: 1439px) {}	HD
+@media (min-width: 1280px) and (max-width: 1359px) {} IPAD2
+@media (min-width: 1024px) and (max-width: 1279px) {} IPAD
+@media (min-width: 896px) and (max-width: 1023px) {}	Ip Xs max horizontal
+@media (min-width: 812px) and (max-width: 895px) {}		Ip Xs horizontal
+@media (min-width: 768px) and (max-width: 811px) {}		Tablet
+@media (min-width: 736px) and (max-width: 767px) {}		Ip 6,7,8 Plus horizontal
+@media (min-width: 667px) and (max-width: 735px) {}		Ip 6,7,8 horizontal
+@media (min-width: 568px) and (max-width: 666px) {}		Ip 5 horizontal
+@media (min-width: 480px) and (max-width: 567px) {}		Ip 4 horizontal
+@media (min-width: 414px) and (max-width: 479px) {}		Ip 6,7,8
+@media (min-width: 320px) and (max-width: 413px) {}		Ip 4,5 */
+
+/*@media end*/

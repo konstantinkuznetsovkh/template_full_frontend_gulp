@@ -1,0 +1,903 @@
+.benefits {
+  padding: 0;
+  @media #{$mobile-small} {
+    height: 2030px;
+  }
+  // overflow: hidden;
+  .rhombus {
+    position: absolute;
+    right: -420px;
+    top: 215px;
+    @media #{$desktop-infinite} {
+      top: 204px;
+    }
+    @media #{$tablet} {
+      display: none;
+    }
+    @media #{$mobile-big} {
+      display: none;
+    }
+  }
+
+  .tabsDesk {
+    background: url(../img/lineDesk.png)no-repeat center top;
+  }
+
+  .benefits__sheme {
+    overflow: hidden;
+    height: 975px;
+    @media #{$desktop-infinite} {
+      height: 964px;
+    }
+    @media #{$tablet} {
+      display: none;
+    }
+    @media #{$mobile-big} {
+      display: none;
+    }
+
+    ul.tabsDesk {
+      align-items: center;
+      background: url(../img/lineDesk.png)no-repeat center top;
+      display: flex;
+      float: left;
+      flex-direction: column;
+      height: 975px;
+      text-align: center;
+      width: 19%;
+      @media #{$desktop-infinite} {
+        height: 964px;
+      }
+
+      .active {
+        background-color: #414f7e;
+      }
+
+      li {
+        background-color: #fff;
+        border: 3px solid #414f7e;
+        cursor: default;
+        height: 22px;
+        position: relative;
+        pointer-events: none;
+        transform: rotate(45deg);
+        width: 22px;
+        @media #{$desktop-infinite} {}
+
+        a {
+          color: #000;
+          cursor: pointer;
+          transform: rotate(-45deg);
+          font-family: "BrutalTypeLight";
+          font-size: 18px;
+          letter-spacing: 0.1px;
+          position: absolute;
+          pointer-events: all;
+          @media #{$desktop-infinite} {}
+        }
+      }
+
+      li:nth-child(1) {
+        margin-top: 201px;
+        @media #{$desktop-infinite} {
+          margin-top: 201px;
+        }
+
+        a {
+          top: 35px;
+          left: 3px;
+          @media #{$desktop-infinite} {
+            top: 35px;
+            left: 3px;
+          }
+        }
+      }
+
+      li:nth-child(2) {
+        margin-top: 206px;
+        @media #{$desktop-infinite} {
+          margin-top: 206px;
+        }
+
+        a {
+          top: 36px;
+          left: -3px;
+          @media #{$desktop-infinite} {
+            top: 36px;
+            left: -3px;
+          }
+        }
+      }
+
+      li:nth-child(3) {
+        margin-top: 199px;
+        @media #{$desktop-infinite} {
+          margin-top: 199px;
+        }
+
+        a {
+          top: 35px;
+          left: 13px;
+          @media #{$desktop-infinite} {
+            top: 35px;
+            left: 13px;
+          }
+        }
+      }
+    }
+
+    .tab-contentDesk {
+      color: #000;
+      float: right;
+      font-family: "BrutalTypeLight";
+      padding: 0;
+      width: 80%;
+
+      .t1 {
+        background: url('../img/logoTabDeskLine1.png')no-repeat top 277px left 180px;
+
+        .empty {
+          background: url('../img/logoTabDesk.png')no-repeat top 329px left 296px;
+
+          h4 {
+            padding: 40px 0 27px 241px;
+            font-size: 30px;
+            letter-spacing: 1px;
+            line-height: 24px;
+            @media #{$desktop-infinite} {}
+          }
+
+          p {
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: 0.1px;
+            padding: 0 0 0 97px;
+            text-align: center;
+            width: 676px;
+
+            br {
+              display: none;
+              @media #{$desktop-infinite} {
+                display: block;
+              }
+            }
+          }
+
+          h5 {
+            font-family: "BrutalTypeLight";
+            font-size: 18px;
+            line-height: 18px;
+            letter-spacing: 0.1px;
+            padding-bottom: 5px;
+            padding-left: 303px;
+            padding-top: 27px;
+          }
+
+          ul.left {
+            display: inline-block;
+            float: left;
+            font-family: 'BrutalTypeLight';
+            width: 28%;
+
+            li:nth-child(3) {
+              p {
+                width: 100%;
+              }
+            }
+
+            h5 {
+              font-family: "BrutalTypeMedium";
+              font-size: 18px;
+              line-height: 18px;
+              letter-spacing: 0.1px;
+              padding-bottom: 2px;
+              padding-left: 0;
+              padding-top: 24px;
+              text-align: left;
+            }
+
+            p {
+              font-size: 14px;
+              line-height: 18px;
+              letter-spacing: 0.1px;
+              padding: 0;
+              text-align: left;
+              width: 95%;
+            }
+          }
+
+          ul.right {
+            display: inline-block;
+            float: right;
+            padding-right: 25px;
+            width: 28%;
+
+            span {
+              background: url("../img/listTable.png");
+              display: none;
+              left: 43px;
+              height: 22px;
+              position: absolute;
+              top: 30px;
+              width: 22px;
+            }
+
+            h5 {
+              text-align: left;
+              font-family: "BrutalTypeMedium";
+              font-size: 18px;
+              line-height: 18px;
+              letter-spacing: 0.1px;
+              padding-bottom: 2px;
+              padding-left: 0;
+              padding-top: 27px;
+            }
+
+            p {
+              font-size: 14px;
+              line-height: 18px;
+              letter-spacing: 0.1px;
+              padding: 0;
+              text-align: left;
+              width: 95%;
+            }
+
+            li:nth-child(3) {
+              width: 85%;
+            }
+
+            li:nth-child(1) {
+              width: 85%;
+            }
+          }
+
+          .bottom {
+            padding-bottom: 51px;
+            padding-top: 474px;
+
+            p {
+              font-family: 'BrutalTypeLight';
+              padding: 0 182px 20px 80px;
+              text-align: center;
+            }
+
+            a {
+              margin-left: 292px;
+              @include bu;
+            }
+          }
+        }
+      }
+
+      .t2 {
+        background: url('../img/logoTabDeskLine2.png')no-repeat top 282px left 191px;
+
+        .empty {
+          background: url('../img/logoTabDesk.png')no-repeat top 335px left 296px;
+
+          h4 {
+            font-size: 30px;
+            letter-spacing: 1px;
+            line-height: 24px;
+            padding: 40px 0 35px 260px;
+            @media #{$desktop-infinite} {}
+          }
+
+          p {
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: 0.1px;
+            padding: 0 0 0 97px;
+            text-align: center;
+            width: 676px;
+
+            br {
+              display: none;
+              @media #{$desktop-infinite} {
+                display: block;
+              }
+            }
+          }
+
+          h5 {
+            font-family: "BrutalTypeLight";
+            font-size: 18px;
+            line-height: 18px;
+            letter-spacing: 0.1px;
+            padding-bottom: 15px;
+            padding-left: 327px;
+            padding-top: 26px;
+          }
+
+          ul.left {
+            display: inline-block;
+            font-family: 'BrutalTypeLight';
+            float: left;
+            width: 28%;
+
+            h5 {
+              line-height: 24px;
+              letter-spacing: 0.1px;
+              padding-left: 0;
+              padding-top: 33px;
+              padding-bottom: 2px;
+              text-align: left;
+              font-family: "BrutalTypeMedium";
+              font-size: 18px;
+            }
+
+            li:nth-child(2) h5 {
+              padding-top: 44px;
+            }
+
+            p {
+              letter-spacing: 0.1px;
+              line-height: 18px;
+              font-size: 14px;
+              padding: 0;
+              text-align: left;
+              width: 95%;
+            }
+
+            li:nth-child(2) p {
+              width: 100%;
+            }
+          }
+
+          ul.right {
+            display: inline-block;
+            float: right;
+            padding-right: 25px;
+            width: 28%;
+
+            li:nth-child(2),
+            li:nth-child(3) {
+              h5 {
+                padding-top: 18px;
+              }
+            }
+
+            span {
+              background: url("../img/listTable.png");
+              display: none;
+              left: 43px;
+              height: 22px;
+              position: absolute;
+              top: 30px;
+              width: 22px;
+            }
+
+            h5 {
+              font-size: 18px;
+              font-family: "BrutalTypeMedium";
+              line-height: 18px;
+              letter-spacing: 0.1px;
+              padding-left: 0;
+              padding-top: 36px;
+              padding-bottom: 2px;
+              text-align: left;
+            }
+
+            p {
+              font-size: 14px;
+              letter-spacing: 0.1px;
+              line-height: 18px;
+              padding: 0;
+              text-align: left;
+              width: 95%;
+            }
+
+            li:nth-child(3) {
+              width: 85%;
+            }
+
+            li:nth-child(1) {
+              width: 85%;
+            }
+          }
+
+          .bottom {
+            padding-top: 458px;
+            padding-bottom: 49px;
+
+            p {
+              font-family: 'BrutalTypeLight';
+              padding: 0 182px 18px 93px;
+              text-align: center;
+            }
+
+            p:first-child {
+              padding-top: 4px;
+            }
+
+            a {
+              margin-left: 304px;
+              @include bu;
+            }
+          }
+        }
+      }
+
+      .t3 {
+        background: url('../img/logoTabDeskLine3.png')no-repeat top 262px left 197px;
+
+        .empty {
+          background: url('../img/logoTabDesk.png')no-repeat top 336px left 287px;
+
+          h4 {
+            padding: 42px 0 30px 373px;
+            font-size: 30px;
+            letter-spacing: 1px;
+            line-height: 24px;
+            @media #{$desktop-infinite} {}
+          }
+
+          p {
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: 0.1px;
+            padding: 0 0 30px 97px;
+            text-align: center;
+            width: 676px;
+          }
+
+          :nth-child(3) {
+            padding-bottom: 68px;
+          }
+
+          h5 {
+            font-family: "BrutalTypeLight";
+            font-size: 18px;
+            line-height: 18px;
+            letter-spacing: 0.1px;
+            padding-left: 303px;
+            padding-top: 27px;
+            padding-bottom: 5px;
+          }
+
+          strong {
+            font-size: 18px;
+            font-family: 'BrutalTypeMedium';
+          }
+
+          li.imgDesk {
+            background-color: #e8e8e8;
+            box-shadow: 5px 6px 11px rgba(0, 0, 0, .75);
+            height: 192px;
+            padding: 0;
+            width: 192px;
+          }
+
+          ul.left {
+            display: inline-block;
+            font-family: 'BrutalTypeLight';
+            float: left;
+            width: 28%;
+
+            li:nth-child(1) {
+              p {
+                width: 103%;
+              }
+            }
+
+            li:nth-child(2) {
+              margin: 64px 0 53px 33px;
+            }
+
+            li:nth-child(3) {
+              p {
+                width: 112%;
+              }
+            }
+
+            h5 {
+              line-height: 18px;
+              letter-spacing: 0.1px;
+              padding-left: 0;
+              padding-top: 24px;
+              padding-bottom: 2px;
+              text-align: left;
+              font-family: "BrutalTypeMedium";
+              font-size: 18px;
+            }
+
+            p {
+              font-size: 14px;
+              line-height: 18px;
+              letter-spacing: 0.1px;
+              padding: 0;
+              text-align: left;
+              width: 95%;
+            }
+          }
+
+          ul.right {
+            margin-top: -16px;
+            padding-right: 25px;
+            width: 28%;
+            display: inline-block;
+            float: right;
+
+            span {
+              background: url("../img/listTable.png");
+              display: none;
+              height: 22px;
+              left: 43px;
+              position: absolute;
+              top: 30px;
+              width: 22px;
+            }
+
+            h5 {
+              font-family: "BrutalTypeMedium";
+              font-size: 18px;
+              line-height: 18px;
+              letter-spacing: 0.1px;
+              padding-left: 0;
+              padding-top: 27px;
+              padding-bottom: 2px;
+              text-align: left;
+            }
+
+            p {
+              font-size: 14px;
+              line-height: 18px;
+              letter-spacing: 0.1px;
+              padding: 0;
+              text-align: left;
+              width: 95%;
+            }
+
+            li:nth-child(2) {
+              margin: 33px 0 36px -50px;
+              width: 69%;
+            }
+          }
+
+          .bottom {
+            padding-bottom: 49px;
+            padding-top: 511px;
+
+            p {
+              font-family: 'BrutalTypeLight';
+              padding: 0 182px 48px 80px;
+              text-align: center;
+            }
+
+            a {
+              margin-left: 292px;
+              @include bu;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .benefits__shemeTabletMob {
+    display: none;
+    @media #{$tablet} {
+      display: block;
+      height: 1390px;
+    }
+    @media #{$mobile-big} {
+      display: block;
+      height: 1418px;
+      overflow: visible;
+    }
+    @media #{$mobile-small} {
+      height: 1901px;
+    }
+
+    ul.tabs {
+      display: flex;
+      justify-content: center;
+      padding: 50px 0 0;
+      @media #{$mobile-big} {
+        padding: 32px 0 0;
+      }
+
+      .active {
+        background-color: #414f7e;
+      }
+
+      li {
+        background-color: #65a9df;
+        display: inline-block;
+        margin: 5px;
+        @media #{$mobile-big} {
+          margin: 0 5px;
+        }
+
+        &:nth-child(1) a {
+          background: url(../img/bayTable.png)no-repeat center 12px;
+          @include bube;
+          @media #{$mobile-small} {
+            width: 105px;
+          }
+        }
+
+        &:nth-child(2) a {
+          background: url(../img/buyerTable.png)no-repeat center 13px;
+          @include bube;
+          @media #{$mobile-small} {
+            width: 105px;
+          }
+        }
+
+        &:nth-child(3) a {
+          background: url(../img/rentTable.png)no-repeat center 12px;
+          @include bube;
+          @media #{$mobile-small} {
+            width: 105px;
+          }
+        }
+      }
+    }
+
+    .tab-content {
+      @media #{$tablet} {
+        background: url('../img/benefitsTablet.png')no-repeat center top 87px;
+        width: 100%;
+      }
+      @media #{$mobile-big} {
+        background: url("../img/benefitsTablet.png") no-repeat 53px 70px;
+        overflow: visible;
+        width: 100%;
+      }
+
+      .block {
+        h4 {
+          font-size: 30px;
+          font-family: "BrutalTypeLight";
+          letter-spacing: 1px;
+          line-height: 24px;
+          padding: 47px 0 34px 241px;
+          @media #{$tablet} {
+            letter-spacing: unset;
+            padding: 27px 0 26px;
+            text-align: center;
+          }
+          @media #{$mobile-big} {
+            text-align: center;
+            letter-spacing: unset;
+            padding: 29px 0 21px;
+          }
+        }
+
+        p {
+          font-family: "BrutalTypeLight";
+          font-size: 18px;
+          line-height: 24px;
+          letter-spacing: 0.1px;
+          padding: 0 0 0 97px;
+          text-align: center;
+          width: 676px;
+          @media #{$tablet} {
+            padding: 0;
+            text-align: left;
+            width: 100%;
+          }
+          @media #{$mobile-big} {
+            padding: 0;
+            text-align: left;
+            width: 100%;
+          }
+        }
+
+        p.big {
+          @media #{$tablet} {
+            width: 101%;
+          }
+          @media #{$mobile-big} {
+            width: 102%;
+          }
+        }
+
+        p.small {
+          @media #{$tablet} {}
+          @media #{$mobile-big} {
+            width: 98%;
+          }
+        }
+
+        h5 {
+          @media #{$tablet} {
+            font-family: "BrutalTypeLight";
+            font-size: 18px;
+            line-height: 18px;
+            letter-spacing: 0.1px;
+            padding-left: 0;
+            padding-top: 20px;
+            text-align: left;
+          }
+          @media #{$mobile-big} {
+            display: none;
+          }
+        }
+
+        br.mob {
+          @media #{$tablet} {
+            display: none;
+          }
+          @media #{$mobile-big} {
+            display: block;
+          }
+        }
+
+        br.tablet {
+          @media #{$tablet} {
+            display: block;
+          }
+          @media #{$mobile-big} {
+            display: none;
+          }
+        }
+
+        ul {
+          h5 {
+            display: block;
+            padding-top: 18px;
+            font-family: "BrutalTypeMedium";
+            @media #{$mobile-big} {
+              padding-top: 16px;
+            }
+          }
+
+          li {
+            position: relative;
+            padding-left: 80px;
+
+            span {
+              @media #{$tablet} {
+                background: url("../img/listTable.png");
+                height: 22px;
+                left: 43px;
+                position: absolute;
+                top: 25px;
+                width: 22px;
+              }
+              @media #{$mobile-big} {
+                background: url("../img/listTable.png");
+                height: 22px;
+                left: 43px;
+                position: absolute;
+                top: 25px;
+                width: 22px;
+              }
+            }
+
+            span.mobText {
+              background: inherit;
+              display: block;
+              height: inherit;
+              position: inherit;
+              width: inherit;
+              @media #{$mobile-big} {
+                display: none;
+              }
+            }
+
+            strong {
+              font-family: "BrutalTypeMedium";
+            }
+          }
+        }
+
+        .bottom {
+          @media #{$tablet} {
+            padding-bottom: 45px;
+            padding-top: 22px;
+            text-align: center;
+          }
+          @media #{$mobile-big} {
+            padding-bottom: 29px;
+            padding-top: 20px;
+            text-align: center;
+          }
+
+          p {
+            padding: 0 182px 20px 80px;
+            text-align: center;
+            @media #{$tablet} {
+              padding: 0 23px 20px 0;
+              text-align: left;
+            }
+            @media #{$mobile-big} {
+              padding: 0 23px 22px 0;
+              text-align: left;
+            }
+
+            br.mob {
+              display: none;
+              @media #{$mobile-big} {
+                display: block;
+              }
+            }
+          }
+
+          a {
+            margin-left: 298px;
+            @include bu;
+            @media#{$tablet} {
+              margin: 15px 0 0;
+            }
+            @media #{$mobile-big} {
+              margin: 4px 0 0;
+            }
+          }
+        }
+      }
+
+      .t3 {
+        .block {
+          p {
+            padding-top: 1px;
+          }
+
+          ul {
+            li {
+              p {
+                padding-top: 17px;
+              }
+            }
+          }
+
+          ul.benefits__shemeTabletMob_images {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1px;
+            margin: 70px 0 27px;
+            @media #{$mobile-big} {
+              flex-wrap: wrap;
+              margin-bottom: 0;
+              padding: 0 29px 1px;
+            }
+
+            li {
+              background-color: #e8e8e8;
+              box-shadow: 5px 6px 11px rgba(0, 0, 0, .75);
+              height: 192px;
+              padding: 0;
+              width: 192px;
+            }
+
+            li:nth-child(1),
+            li:nth-child(2) {
+              @media #{$mobile-big} {
+                margin-bottom: 33px;
+              }
+            }
+
+            li:nth-child(4) {
+              display: none;
+              @media #{$mobile-big} {
+                background-color: unset;
+                box-shadow: unset;
+                display: block;
+                margin-right: -10px;
+                width: 210px;
+              }
+
+              p {
+                padding-top: 33px;
+              }
+            }
+          }
+
+          .bottom {
+            p {
+              @media #{$mobile-big} {
+                display: none;
+              }
+            }
+
+            a {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

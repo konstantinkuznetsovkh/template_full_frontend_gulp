@@ -1,0 +1,111 @@
+.team {
+  background: #c3e0f8;
+  text-align: center;
+
+  h4 {
+    color: #000;
+    font-family: "BrutalTypeLight";
+    font-size: 30.14px;
+    letter-spacing: 1px;
+    padding-top: 23px;
+    @media #{$mobile-big} {
+      padding: 22px 0 10px;
+    }
+    @media #{$mobile-small} {
+      padding: 22px 0 10px;
+    }
+  }
+
+  .boxImg {
+    display: inline-block;
+    height: 402px;
+    margin: 0 12px;
+    position: relative;
+    width: 256px;
+    @media#{$tablet} {
+      margin: 28px 30px;
+    }
+    @media #{$mobile-big} {
+      margin: 14px 110px;
+    }
+    @media #{$mobile-small} {
+      margin: 14px 0;
+    }
+
+    img {
+      height: 402px;
+      width: 256px;
+    }
+
+    span {
+      background: rgba(255, 255, 255, 0.8);
+      bottom: 0;
+      color: #000;
+      font-family: "BrutalTypeLight";
+      font-size: 24px;
+      left: 0;
+      letter-spacing: 1px;
+      padding: 16px 0 20px;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  .bx-wrapper {
+    @media #{$tablet} {
+      padding: 0;
+    }
+    @media #{$mobile-big} {
+      padding: 0 0 14px;
+    }
+    @media #{$mobile-small} {
+      padding: 0 0 14px;
+    }
+  }
+
+  .bx-wrapper .bx-controls-direction a {
+    @media#{$tablet} {
+      display: none;
+    }
+    @media #{$mobile-big} {
+      display: none;
+    }
+    @media #{$mobile-small} {
+      display: none;
+    }
+  }
+}
+
+.bx-wrapper {
+  background: none;
+  border: none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  padding: 51px 0 53px;
+}
+
+.bx-pager {
+  display: none;
+}
+
+.bx-wrapper .bx-prev {
+  background: url("../img/t1.png") no-repeat;
+  left: 0;
+}
+
+.bx-wrapper .bx-next {
+  background: url("../img/t2.png") no-repeat;
+  right: 0;
+}
+
+.bx-wrapper .bx-controls-direction a {
+  height: 27px;
+  margin-top: -16px;
+  outline: 0;
+  position: absolute;
+  top: 50%;
+  text-indent: -9999px;
+  width: 16px;
+  z-index: 9999;
+}

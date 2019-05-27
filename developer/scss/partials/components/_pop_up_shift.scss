@@ -1,0 +1,67 @@
+// start pop_up_shift/////////////////////////////////////////////////////////////////////////////////////
+#pop_up_shift {
+	background: rgba(2, 41, 5, 0.25);
+	visibility: hidden;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	transition: all .05s linear;
+	width: 100vw;
+	height: 100vh;
+
+	div {
+		background: rgb(255, 255, 255);
+		border: 2px solid rgb(0, 0, 0);
+		box-shadow: 0 0 20px 2px rgba(0, 0, 0, .2);
+		box-sizing: border-box;
+		border-radius: 7px;
+		position: fixed;
+		bottom: 3vh;
+		display: inline-block;
+		right: -21vw;
+		padding: 2%;
+		z-index: 9998;
+		transition: all .8s linear;
+
+		&:before {
+			border-left: 12px solid rgba(0, 0, 0, 0);
+			border-right: 12px solid rgba(0, 0, 0, 0);
+			border-top: 38px solid rgb(255, 255, 255);
+			content: "";
+			transform: rotate(-42deg);
+			position: absolute;
+			bottom: -22px;
+			right: -13px;
+			z-index: 9997;
+			width: 0;
+			height: 0;
+		}
+
+		&:after {
+			border-left: 12px solid rgba(0, 0, 0, 0);
+			border-right: 12px solid rgba(0, 0, 0, 0);
+			border-top: 38px solid rgb(0, 0, 0);
+			content: "";
+			transform: rotate(-42deg);
+			position: absolute;
+			bottom: -27px;
+			right: -17px;
+			z-index: 9996;
+			width: 0;
+			height: 0;
+		}
+
+		p {
+			font-size: 19px;
+			text-align: center;
+		}
+	}
+}
+
+#button_pop_up_shift {
+	background: blue;
+}
+
+// end pop_up_shift//////////////////////////////////////////////////////////////////////////////////////

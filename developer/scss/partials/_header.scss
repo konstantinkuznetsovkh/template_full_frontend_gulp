@@ -1,0 +1,21 @@
+//start header//////////////////////////////////////////////////////////////////////////////////////
+header {
+
+  // @media #{$tablet} {}
+
+  // @media #{$desktop-infinite} {}
+
+  // @media #{$mobile-big} {}
+
+  // @media #{$mobile-small} {
+  //   @include cf;
+
+  //   &:hover {}
+  // }
+  // @import "partials/components/_nav_menu_header.scss";
+
+
+  @import "components/_nav_menu_header.scss";
+}
+
+//end header//////////////////////////////////////////////////////////////////////////////////////

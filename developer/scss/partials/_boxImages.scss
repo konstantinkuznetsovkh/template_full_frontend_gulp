@@ -1,0 +1,344 @@
+.boxImages {
+  overflow: hidden;
+  position: relative;
+  @media #{$mobile-big} {
+    height: 2009px;
+  }
+
+  .back_top {
+    background: #414f7e;
+    height: 270px;
+    margin-bottom: 510px;
+    width: 100%;
+    @media#{$tablet} {
+      margin-bottom: 508px;
+    }
+  }
+
+  .back_mid {
+    background: #414f7e;
+    height: 270px;
+    width: 100%;
+    @media#{$tablet} {
+      height: 520px;
+      margin-bottom: 494px;
+    }
+    @media #{$mobile-big} {
+      margin-top: 602px;
+    }
+  }
+
+  .back_downTablet {
+    background: #414f7e;
+    display: none;
+    height: 270px;
+    width: 100%;
+    @media#{$tablet} {
+      display: block;
+    }
+    @media #{$mobile-big} {
+      display: block;
+      margin-top: 597px;
+    }
+  }
+
+  .back_bottom {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    padding: 15px 0;
+    right: 0;
+    top: 0;
+    @media#{$tablet} {
+      height: 2068px;
+      padding: 30px 0;
+    }
+    @media #{$mobile-big} {
+      padding: 0;
+    }
+
+    .layout {
+      overflow: hidden;
+      width: 1512px;
+      @media #{$desktop-infinite} {
+        height: 1019px;
+        width: 1366px;
+      }
+      @media#{$tablet} {
+        height: 100%;
+        width: 711px;
+      }
+      @media #{$mobile-big} {
+        height: 2150px;
+        width: 540px;
+      }
+
+      .boxImages_topLeft {
+        display: inline-block;
+        height: 480px;
+        margin: 15px;
+        position: relative;
+        width: 714px;
+        @media #{$desktop-infinite} {
+          left: -61px;
+          position: absolute;
+          top: 0;
+        }
+        @media#{$tablet} {
+          height: 478px;
+          left: unset;
+          margin: 0;
+          width: 711px;
+        }
+        @media #{$mobile-big} {
+          left: -103px;
+          overflow: hidden;
+          position: absolute;
+          top: -15px;
+        }
+
+        img {
+          width: 714px;
+          height: 480px;
+          @media#{$tablet} {
+            height: 478px;
+            width: 711px;
+          }
+          @media #{$mobile-big} {}
+        }
+
+        span {
+          align-items: center;
+          background: rgba(255, 255, 255, 0.52);
+          bottom: 0;
+          color: #414f7e;
+          display: flex;
+          font-family: 'BrutalTypeMedium';
+          font-size: 30px;
+          justify-content: center;
+          letter-spacing: 0.1px;
+          position: absolute;
+          right: 0;
+          height: 68px;
+          width: 190px;
+          @media#{$tablet} {
+            bottom: 0;
+            right: 35px;
+          }
+          @media #{$mobile-big} {
+            right: 116px;
+            width: 161px;
+          }
+          @media #{$mobile-small} {
+            right: 286px;
+          }
+        }
+      }
+
+      .boxImages_topRight {
+        position: relative;
+        display: inline-block;
+        width: 711px;
+        height: 480px;
+        margin: 15px;
+        @media #{$desktop-infinite} {
+          position: absolute;
+          right: -61px;
+          top: 0;
+          width: 714px;
+        }
+        @media#{$tablet} {
+          height: 478px;
+          margin: 0;
+          right: unset;
+          top: 26px;
+          width: 711px;
+        }
+        @media #{$mobile-big} {
+          left: -187px;
+          overflow: hidden;
+          position: absolute;
+          top: 496px;
+        }
+        img {
+          height: 480px;
+          width: 714px;
+          @media#{$tablet} {
+            height: 478px;
+            width: 711px;
+          }
+          @media #{$mobile-big} {
+            margin-top: -12px;
+            transform: scale(1.075);
+          }
+        }
+
+        span {
+          align-items: center;
+          background: rgba(255, 255, 255, 0.52);
+          bottom: 0;
+          color: #414f7e;
+          display: flex;
+          justify-content: center;
+          font-family: 'Brutal Type';
+          font-size: 30px;
+          font-weight: 400;
+          letter-spacing: 0.1px;
+          left: 0;
+          position: absolute;
+          height: 68px;
+          width: 140px;
+          @media#{$tablet} {
+            bottom: 0;
+            left: unset;
+            right: 35px;
+          }
+          @media #{$mobile-big} {
+            left: unset;
+            right: 30px;
+            width: 145px;
+          }
+          @media #{$mobile-small} {
+            right: 199px;
+          }
+        }
+      }
+
+      .boxImages_bottomLeft {
+        display: inline-block;
+        height: 478px;
+        margin: 15px;
+        position: relative;
+        width: 810px;
+        @media #{$desktop-infinite} {
+          bottom: 0;
+          left: -58px;
+          position: absolute;
+        }
+        @media#{$tablet} {
+          height: 478px;
+          right: 0;
+          left: unset;
+          margin: 0;
+          top: 52px;
+          width: 711px;
+        }
+        @media #{$mobile-big} {
+          left: -113px;
+          overflow: hidden;
+          position: absolute;
+          top: 1007px;
+        }
+        img {
+          height: 478px;
+          width: 810px;
+          @media#{$tablet} {
+            height: 478px;
+            width: 711px;
+          }
+          @media #{$mobile-big} {}
+        }
+
+        span {
+          align-items: center;
+          background: rgba(255, 255, 255, 0.52);
+          color: #414f7e;
+          display: flex;
+          font-family: 'Brutal Type';
+          font-size: 30px;
+          font-weight: 400;
+          height: 68px;
+          justify-content: center;
+          letter-spacing: 0.1px;
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 145px;
+          @media #{$tablet} {
+            bottom: 0;
+            right: 35px;
+            top: unset;
+          }
+          @media #{$mobile-big} {
+            bottom: 0;
+            right: 202px;
+            top: unset;
+            width: 145px;
+          }
+          @media #{$mobile-small} {
+            right: 372px;
+          }
+        }
+      }
+
+      .boxImages_bottomRight {
+        display: inline-block;
+        height: 478px;
+        margin: 15px;
+        position: relative;
+        width: 614px;
+        @media #{$desktop-infinite} {
+          bottom: 0;
+          position: absolute;
+          right: -58px;
+        }
+        @media#{$tablet} {
+          height: 478px;
+          margin: 0;
+          right: 0;
+          top: 78px;
+          width: 711px;
+        }
+        @media #{$mobile-big} {
+          left: -48px;
+          overflow: hidden;
+          position: absolute;
+          top: 1516px;
+        }
+        img {
+          height: 478px;
+          width: 614px;
+          @media#{$tablet} {
+            height: 478px;
+            width: 711px;
+          }
+          @media #{$mobile-big} {
+          }
+        }
+
+        span {
+          align-items: center;
+          background: rgba(255, 255, 255, 0.52);
+          color: #414f7e;
+          display: flex;
+          font-family: 'Brutal Type';
+          font-size: 30px;
+          justify-content: center;
+          font-weight: 400;
+          height: 68px;
+          letter-spacing: 0.1px;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 171px;
+          @media#{$tablet} {
+            bottom: 0;
+            left: unset;
+            right: 35px;
+            top: unset;
+          }
+          @media #{$mobile-big} {
+            bottom: 0;
+            left: unset;
+            right: 71px;
+            top: unset;
+            width: 145px;
+          }
+          @media #{$mobile-small} {
+            right: 242px;
+          }
+        }
+      }
+    }
+  }
+}
