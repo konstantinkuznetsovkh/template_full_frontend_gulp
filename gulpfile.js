@@ -201,8 +201,4 @@
 			.pipe(gulp.dest('production'));
 	});
 	gulp.task('default', ['html_include', 'watch', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'img_min', 'transfer_favicon', 'transfer_fonts']);
-	// gulp.task('default', ['scss', 'watch', 'html_include','concat_js','autoprefixer']);
-	// потомучто не требуется каждый раз переуменьшать картинки и 
-	// gulp.task('default', ['img_min',transfer_favicon']);
-
 })(require);
