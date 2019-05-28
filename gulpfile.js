@@ -4,23 +4,25 @@
 	const gulp = r('gulp'),
 		// npm i gulpjs/gulp#3.9.1
 		watch = r('gulp-watch'),
-		html_include = r('gulp-file-include'),
-		scss = r('gulp-sass'),
-		autoprefixer = r('gulp-autoprefixer'),
-		filesize = r('gulp-size'),
-		uglify_js = r('gulp-uglify'),
-		babel = r('gulp-babel'),
-		// npm install --save-dev @babel/core @babel/preset-env
-		concat = r('gulp-concat'),
-		cleanCSS = r('gulp-clean-css'),
-		sourcemaps = r('gulp-sourcemaps'), //добавляют размер в два раза
-		img_min = r('gulp-imagemin'),
-		htmlnano = r('gulp-htmlnano'),
-		gcmq = r('gulp-group-css-media-queries'),
 		plumber = r('gulp-plumber'),
+		filesize = r('gulp-size'),
 		changed = r('gulp-changed'),
 		rigger = r('gulp-rigger'),
-		webp = require('gulp-webp');
+
+		scss = r('gulp-sass'),
+		autoprefixer = r('gulp-autoprefixer'),
+		gcmq = r('gulp-group-css-media-queries'),
+		uncss = r('gulp-uncss'),
+		cleanCSS = r('gulp-clean-css'),
+		html_include = r('gulp-file-include'),
+		htmlnano = r('gulp-htmlnano'),
+		concat = r('gulp-concat'),
+		babel = r('gulp-babel'),
+		uglify_js = r('gulp-uglify'),
+		// npm install --save-dev @babel/core @babel/preset-env
+		sourcemaps = r('gulp-sourcemaps'), //добавляют размер в два раза
+		img_min = r('gulp-imagemin'),
+		webp = r('gulp-webp');
 	// var options = {
 	// 	removeComments: false
 	// };
@@ -44,6 +46,9 @@
 			}))
 			// .pipe(sourcemaps.init())
 			.pipe(gcmq())
+			.pipe(uncss({
+				html: ['developer/index.html']
+			}))
 			.pipe(cleanCSS())
 			// .pipe(sourcemaps.write())
 			// .pipe(plumber.stop())//не ясно зачем возвращать поведение по умолчанию
@@ -195,7 +200,7 @@
 			.pipe(rigger())
 			.pipe(gulp.dest('production'));
 	});
-	gulp.task('default', ['html_include', 'watch', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'img_min', 'transfer_favicon']);
+	gulp.task('default', ['html_include', 'watch', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'img_min', 'transfer_favicon', 'transfer_fonts']);
 	// gulp.task('default', ['scss', 'watch', 'html_include','concat_js','autoprefixer']);
 	// потомучто не требуется каждый раз переуменьшать картинки и 
 	// gulp.task('default', ['img_min',transfer_favicon']);
