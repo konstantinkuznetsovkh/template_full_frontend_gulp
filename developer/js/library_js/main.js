@@ -3,7 +3,7 @@
 // });
 //Start customs ecma javascript////////////////////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', () => {
-    // "use strict";
+    "use strict";
     //функция=код функции+доступные данные!
     // function click() {
     // 	let c = 0;
@@ -105,16 +105,16 @@ document.addEventListener('DOMContentLoaded', () => {
     //end pop_up_shift///////////////////////////////////////////////////////////////////////
     //tabs//////////////////////////////////////////////////////////////////////////////////////
     (() => {
-        let all_tabs = document.getElementsByClassName('tab');
-        for (let i = 0; i < all_tabs.length; i++) {
-            let tab = document.getElementsByClassName('("tab"+"_"+i)');
-            // alert(tab);
-            for (let i = 0; i < tab.length; i++) {
-                tab[i].style.opacity = '0';
-                alert(tab[i]);
-            }
-        }
-        let tab = document.getElementById('tab_0'),
+        // let all_tabs = document.getElementsByClassName('tab');
+        // for (let i = 0; i < all_tabs.length; i++) {
+        //     let tab = document.getElementsByClassName('("tab"+"_"+i)');
+        //     // alert(tab);
+        //     for (let i = 0; i < tab.length; i++) {
+        //         tab[i].style.opacity = '0';
+        //         alert(tab[i]);
+        //     }
+        // }
+        const tab = document.getElementById('tab_0'),
             links = tab.querySelectorAll('.tab_links li'),
             tabs = tab.querySelectorAll('.tab_content li');
         //start active tab

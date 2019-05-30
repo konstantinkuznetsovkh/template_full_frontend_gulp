@@ -4,8 +4,7 @@
 // });
 //Start customs ecma javascript////////////////////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', function () {
-  // "use strict";
-  //функция=код функции+доступные данные!
+  "use strict"; //функция=код функции+доступные данные!
   // function click() {
   // 	let c = 0;
   // 	return () => {
@@ -18,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // d();
   // d();
   //ползунок///////////////
+
   (function () {
     var range = document.getElementById('r'),
         //rng - это Input
@@ -126,18 +126,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   (function () {
-    var all_tabs = document.getElementsByClassName('tab');
-
-    for (var i = 0; i < all_tabs.length; i++) {
-      var _tab = document.getElementsByClassName('("tab"+"_"+i)'); // alert(tab);
-
-
-      for (var _i5 = 0; _i5 < _tab.length; _i5++) {
-        _tab[_i5].style.opacity = '0';
-        alert(_tab[_i5]);
-      }
-    }
-
+    // let all_tabs = document.getElementsByClassName('tab');
+    // for (let i = 0; i < all_tabs.length; i++) {
+    //     let tab = document.getElementsByClassName('("tab"+"_"+i)');
+    //     // alert(tab);
+    //     for (let i = 0; i < tab.length; i++) {
+    //         tab[i].style.opacity = '0';
+    //         alert(tab[i]);
+    //     }
+    // }
     var tab = document.getElementById('tab_0'),
         links = tab.querySelectorAll('.tab_links li'),
         tabs = tab.querySelectorAll('.tab_content li'); //start active tab
@@ -152,26 +149,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function remove_active() {
-      for (var _i6 = 0; _i6 < links.length; _i6++) {
-        links[_i6].classList.remove('active');
+      for (var i = 0; i < links.length; i++) {
+        links[i].classList.remove('active');
       }
 
-      for (var _i7 = 0; _i7 < tabs.length; _i7++) {
-        tabs[_i7].classList.remove('active');
+      for (var _i5 = 0; _i5 < tabs.length; _i5++) {
+        tabs[_i5].classList.remove('active');
       }
     } //if click start events and search index in array
 
 
-    var _loop = function _loop(_i8) {
-      var link = links[_i8];
+    var _loop = function _loop(i) {
+      var link = links[i];
       link.addEventListener('click', function () {
         remove_active();
-        add_active(_i8);
+        add_active(i);
       }, false);
     };
 
-    for (var _i8 = 0; _i8 < links.length; _i8++) {
-      _loop(_i8);
+    for (var i = 0; i < links.length; i++) {
+      _loop(i);
     }
   })(); //end tabs//////////////////////////////////////////////////////////////////////////////////////
   //start show copyright year in footer/////////////////////////////////////////////////////////////////////
