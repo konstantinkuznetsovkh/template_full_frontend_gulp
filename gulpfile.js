@@ -33,29 +33,29 @@
 	// this start tasks for developer///////////////////////////////
 	gulp.task('scss', () => {
 		gulp.src('developer/scss/all.scss')
-			// .pipe(changed('developer/css'))
+			.pipe(changed('developer/css'))
 			.pipe(plumber())
 			.pipe(scss())
 			.pipe(gulp.dest('developer/css'))
 	});
 	gulp.task('css', () => {
-		// gulp.src(['developer/css/all.css', 'developer/css/library_css/*.css'])
-		gulp.src('developer/css/all.css')
-			// .pipe(concat('all.css'))
-			// .pipe(changed('production/css'))
+		gulp.src(['developer/css/all.css', 'developer/css/library_css/*.css'])
+			// gulp.src('developer/css/all.css')
+			.pipe(changed('production/css'))
+			.pipe(concat('all.css'))
 			.pipe(filesize({
 				title: 'before',
 				showFiles: true
 			}))
 			.pipe(autoprefixer({
 				browsers: ['last 22 versions'],
-				cascade: false
+				cascade: true
 			}))
 			// .pipe(sourcemaps.init())
 			.pipe(gcmq())
-			.pipe(uncss({
-				html: ['developer/index.html']
-			}))
+			// .pipe(uncss({
+			// 	html: ['production/index.html']
+			// }))
 			.pipe(cleanCSS())
 			// .pipe(sourcemaps.write())
 			// .pipe(plumber.stop())//не ясно зачем возвращать поведение по умолчанию
@@ -169,23 +169,23 @@
 	gulp.task('watch', () => {
 		watch('developer/html/**/*.html');
 		watch('developer/scss/**/*.scss');
-		// watch('developer/css/**/*.css');
+		watch('developer/css/**/*.css');
 		watch(['developer/js/library_js/main.js', 'developer/js/library_js/conected.js']);
 		watch('developer/js/library_js/main.js');
 		watch('developer/js/main.js');
-		// watch('developer/index.html');
+		watch('developer/index.html');
 		watch('developer/fonts');
 		watch('developer/img/*');
 		watch('developer/fonts/*');
 
-		gulp.watch('developer/html/**/*.html', ['html_include', 'html_min']);
-		gulp.watch('developer/scss/**/*.scss', ['scss', 'css']);
-		// gulp.watch('developer/css/**/*.css', ['css']);
+		gulp.watch('developer/html/**/*.html', ['html_include']);
+		gulp.watch('developer/scss/**/*.scss', ['scss']);
+		gulp.watch('developer/css/**/*.css', ['css']);
 
 		gulp.watch(['developer/js/library_js/main.js', 'developer/js/library_js/conected.js'], ['before_js_in_production']);
 		gulp.watch('developer/js/library_js/main.js', ['before_2_js_in_production']);
 		gulp.watch('developer/js/main.js', ['js']);
-		// gulp.watch('developer/index.html', ['html_min']);
+		gulp.watch('developer/index.html', ['html_min']);
 		gulp.watch('developer/fonts', ['transfer_fonts']);
 		gulp.watch('developer/img/*', ['img_min']);
 		gulp.watch('developer/fonts/*', ['transfer_fonts']);
