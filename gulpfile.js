@@ -76,7 +76,7 @@
 				showFiles: true
 			}))
 			.pipe(autoprefixer({
-				browsers: ['last 22 versions'],
+				browsers: ['> 0.1%'],
 				cascade: true
 			}))
 			// .pipe(sourcemaps.init())
