@@ -22,7 +22,12 @@
 		// npm install --save-dev @babel/core @babel/preset-env
 		sourcemaps = r('gulp-sourcemaps'), //добавляют размер в два раза
 		img_min = r('gulp-imagemin'),
+		cache = require('gulp-cache'), //если нету то будет оч тормозить обработка картинок!прям пиздец как!
 		webp = r('gulp-webp');
+	const del = require('del');
+	var browserSync = require('browser-sync').create();
+	// const browserSync = require('browser-sync'),
+	// 	reload = browserSync.reload;
 	// var options = {
 	// 	removeComments: false
 	// };
@@ -30,6 +35,30 @@
 	// const SRC = 'src/*.js';
 	// const DEST = 'dist';
 
+
+
+	// gulp.task('browser-sync', () => {
+	// 	browserSync({
+	// 		server: {
+	// 			baseDir: 'production'
+	// 		},
+	// 		notify: false
+	// 		// open: false,
+	// 		// online: false, // Work Offline Without Internet Connection
+	// 		// tunnel: true, tunnel: "projectname", // Demonstration page: http://projectname.localtunnel.me
+	// 	});
+	// });
+
+	gulp.task('browser-sync', function () {
+		browserSync.init({
+			server: {
+				baseDir: "./production/"
+			}
+		});
+	});
+	gulp.task('del', () => {
+		return del('production/*');
+	})
 	// this start tasks for developer///////////////////////////////
 	gulp.task('scss', () => {
 		gulp.src('developer/scss/all.scss')
@@ -40,7 +69,6 @@
 	});
 	gulp.task('css', () => {
 		gulp.src(['developer/css/all.css', 'developer/css/library_css/*.css'])
-			// gulp.src('developer/css/all.css')
 			.pipe(changed('production/css'))
 			.pipe(concat('all.css'))
 			.pipe(filesize({
@@ -54,16 +82,19 @@
 			// .pipe(sourcemaps.init())
 			.pipe(gcmq())
 			// .pipe(uncss({
-			// 	html: ['production/index.html']
+			// 	html: ['production/index.html'] //не работает
 			// }))
-			.pipe(cleanCSS())
+			.pipe(cleanCSS({
+				level: 2
+			}))
 			// .pipe(sourcemaps.write())
 			// .pipe(plumber.stop())//не ясно зачем возвращать поведение по умолчанию
 			.pipe(gulp.dest('production/css'))
 			.pipe(filesize({
 				title: 'after',
 				showFiles: true
-			}));
+			}))
+			.pipe(browserSync.stream());
 	});
 	gulp.task('img_min', () => {
 		gulp.src('developer/img/*')
@@ -72,12 +103,14 @@
 				title: 'before',
 				showFiles: true
 			}))
-			.pipe(img_min())
+			.pipe(
+				cache(img_min()))
 			.pipe(gulp.dest('production/img'))
 			.pipe(filesize({
 				title: 'after',
 				showFiles: true
 			}))
+			.pipe(browserSync.stream());
 	});
 
 	gulp.task('convert_webp', () => {
@@ -114,6 +147,7 @@
 				title: 'after',
 				showFiles: true
 			}))
+			.pipe(browserSync.stream());
 	});
 
 	// gulp.task('minify-css', () => {
@@ -165,6 +199,10 @@
 				title: 'after',
 				showFiles: true
 			}))
+			.pipe(browserSync.stream());
+		// .pipe(reload({
+		// 	stream: true
+		// })); //И перезагрузим наш сервер для обновлений
 	});
 	gulp.task('watch', () => {
 		watch('developer/html/**/*.html');
@@ -199,14 +237,17 @@
 	gulp.task('transfer_fonts', () => {
 		gulp.src('developer/fonts/*')
 			.pipe(changed('production'))
-			.pipe(rigger())
+			// .pipe(rigger())
 			.pipe(gulp.dest('production'));
 	});
 	gulp.task('transfer_favicon', () => {
 		gulp.src('developer/*.ico')
-			// .pipe(changed('production'))
-			.pipe(rigger())
-			.pipe(gulp.dest('production'));
+			.pipe(changed('production'))
+			// .pipe(rigger())
+			.pipe(gulp.dest('production'))
+		// .pipe(reload({
+		// 	stream: true
+		// })); //И перезагрузим наш сервер для обновлений
 	}); //не работает с фавиконом!!?
-	gulp.task('default', ['html_include', 'html_min', 'watch', 'scss', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'img_min', 'transfer_favicon', 'transfer_fonts']);
+	gulp.task('default', ['del', 'img_min', 'browser-sync', 'html_include', 'html_min', 'scss', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'transfer_favicon', 'transfer_fonts', 'watch']);
 })(require);
