@@ -22,10 +22,10 @@
 		// npm install --save-dev @babel/core @babel/preset-env
 		sourcemaps = r('gulp-sourcemaps'), //добавляют размер в два раза
 		img_min = r('gulp-imagemin'),
-		cache = require('gulp-cache'), //если нету то будет оч тормозить обработка картинок!прям пиздец как!
+		cache = r('gulp-cache'), //если нету то будет оч тормозить обработка картинок!прям пиздец как!
+		browserSync = r('browser-sync').create(),
 		webp = r('gulp-webp');
-	const del = require('del');
-	var browserSync = require('browser-sync').create();
+	const del = r('del');
 	// const browserSync = require('browser-sync'),
 	// 	reload = browserSync.reload;
 	// var options = {
@@ -52,8 +52,10 @@
 	gulp.task('browser-sync', function () {
 		browserSync.init({
 			server: {
-				baseDir: "./production/"
-			}
+				baseDir: "./production",
+			},
+			port: 8008, //сменить порт3000 на какой хоч
+			notify: false // Отключаем уведомления			
 		});
 	});
 	gulp.task('del', () => {
