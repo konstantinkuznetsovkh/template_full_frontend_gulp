@@ -21,13 +21,11 @@
 		uglify_js = r('gulp-uglify'),
 		// npm install --save-dev @babel/core @babel/preset-env
 		sourcemaps = r('gulp-sourcemaps'), //добавляют размер в два раза
+		del = r('del'),
 		img_min = r('gulp-imagemin'),
 		cache = r('gulp-cache'), //если нету то будет оч тормозить обработка картинок!прям пиздец как!
 		browserSync = r('browser-sync').create(),
 		webp = r('gulp-webp');
-	const del = r('del');
-	// const browserSync = require('browser-sync'),
-	// 	reload = browserSync.reload;
 	// var options = {
 	// 	removeComments: false
 	// };
@@ -49,7 +47,7 @@
 	// 	});
 	// });
 
-	gulp.task('browser-sync', function () {
+	gulp.task('browser-sync', () => {
 		browserSync.init({
 			server: {
 				baseDir: "./production",
@@ -151,12 +149,6 @@
 			}))
 			.pipe(browserSync.stream());
 	});
-
-	// gulp.task('minify-css', () => {
-	// 	return gulp.src('styles/*.css')
-	// 	  .pipe(cleanCSS({compatibility: 'ie8'}))
-	// 	  .pipe(gulp.dest('dist'));
-	//   });
 	gulp.task('before_js_in_production', () => {
 		gulp.src('./developer/js/library_js/library/*.js')
 			.pipe(changed('developer/js/conected.js'))
@@ -167,7 +159,6 @@
 				showFiles: true
 			}))
 	});
-
 	gulp.task('before_2_js_in_production', () => {
 		gulp.src('./developer/js/library_js/main.js')
 			.pipe(changed('developer/js'))
@@ -202,9 +193,6 @@
 				showFiles: true
 			}))
 			.pipe(browserSync.stream());
-		// .pipe(reload({
-		// 	stream: true
-		// })); //И перезагрузим наш сервер для обновлений
 	});
 	gulp.task('watch', () => {
 		// watch('developer/html/**/*.html');
@@ -221,7 +209,6 @@
 		gulp.watch('developer/html/**/*.html', ['html_include']);
 		gulp.watch('developer/scss/**/*.scss', ['scss']);
 		gulp.watch('developer/css/**/*.css', ['css']);
-
 		gulp.watch(['developer/js/library_js/main.js', 'developer/js/library_js/conected.js'], ['before_js_in_production']);
 		gulp.watch('developer/js/library_js/main.js', ['before_2_js_in_production']);
 		gulp.watch('developer/js/main.js', ['js']);
@@ -229,27 +216,18 @@
 		gulp.watch('developer/fonts', ['transfer_fonts']);
 		gulp.watch('developer/img/*', ['img_min']);
 		gulp.watch('developer/fonts/*', ['transfer_fonts']);
-
-		// watch('developer/css/all.css');
-		// watch('developer/js/library_js/*.js');
-		// gulp.watch('developer/css/all.css', ['autoprefixer']);
-		// gulp.watch('developer/js/library_js/*.js', ['concat_js']);
 	});
-	// this end tasks for developer////////////////////////////////
+
 	gulp.task('transfer_fonts', () => {
 		gulp.src('developer/fonts/*')
 			.pipe(changed('production'))
-			// .pipe(rigger())
 			.pipe(gulp.dest('production'));
 	});
 	gulp.task('transfer_favicon', () => {
 		gulp.src('developer/*.ico')
 			.pipe(changed('production'))
-			// .pipe(rigger())
 			.pipe(gulp.dest('production'))
-		// .pipe(reload({
-		// 	stream: true
-		// })); //И перезагрузим наш сервер для обновлений
-	}); //не работает с фавиконом!!?
+			.pipe(browserSync.stream());
+	});
 	gulp.task('default', ['del', 'img_min', 'browser-sync', 'html_include', 'html_min', 'scss', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'transfer_favicon', 'transfer_fonts', 'watch']);
 })(require);
