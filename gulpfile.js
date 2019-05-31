@@ -205,16 +205,16 @@
 		// })); //И перезагрузим наш сервер для обновлений
 	});
 	gulp.task('watch', () => {
-		watch('developer/html/**/*.html');
-		watch('developer/scss/**/*.scss');
-		watch('developer/css/**/*.css');
-		watch(['developer/js/library_js/main.js', 'developer/js/library_js/conected.js']);
-		watch('developer/js/library_js/main.js');
-		watch('developer/js/main.js');
-		watch('developer/index.html');
-		watch('developer/fonts');
-		watch('developer/img/*');
-		watch('developer/fonts/*');
+		// watch('developer/html/**/*.html');
+		// watch('developer/scss/**/*.scss');
+		// watch('developer/css/**/*.css');
+		// watch(['developer/js/library_js/main.js', 'developer/js/library_js/conected.js']);
+		// watch('developer/js/library_js/main.js');
+		// watch('developer/js/main.js');
+		// watch('developer/index.html');
+		// watch('developer/fonts');
+		// watch('developer/img/*');
+		// watch('developer/fonts/*');
 
 		gulp.watch('developer/html/**/*.html', ['html_include']);
 		gulp.watch('developer/scss/**/*.scss', ['scss']);
