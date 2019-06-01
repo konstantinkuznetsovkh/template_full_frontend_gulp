@@ -3,10 +3,13 @@
 	'use strict';
 	const gulp = r('gulp'),
 		// npm i gulpjs/gulp#3.9.1
+		del = r('del'),
 		watch = r('gulp-watch'),
 		plumber = r('gulp-plumber'),
 		filesize = r('gulp-size'),
 		changed = r('gulp-changed'),
+		gulpif = r('gulp-if'),
+		browserSync = r('browser-sync').create(),
 		scss = r('gulp-sass'),
 		autoprefixer = r('gulp-autoprefixer'),
 		gcmq = r('gulp-group-css-media-queries'),
@@ -18,12 +21,9 @@
 		babel = r('gulp-babel'),
 		uglify_js = r('gulp-uglify'),
 		// npm install --save-dev @babel/core @babel/preset-env
-		sourcemaps = r('gulp-sourcemaps'), //добавляют размер в два раза
-		del = r('del'),
+		sourcemaps = r('gulp-sourcemaps'), //добавляют размер в два раза		
 		img_min = r('gulp-imagemin'),
 		cache = r('gulp-cache'), //если нету то будет оч тормозить обработка картинок!прям огого как!
-		browserSync = r('browser-sync').create(),
-		gulpif = r('gulp-if'),
 		webp = r('gulp-webp');
 	let theEnd = true; //сработает
 	// let theEnd = false; //не сработает
