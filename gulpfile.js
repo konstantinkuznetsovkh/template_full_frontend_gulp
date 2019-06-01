@@ -7,8 +7,6 @@
 		plumber = r('gulp-plumber'),
 		filesize = r('gulp-size'),
 		changed = r('gulp-changed'),
-		rigger = r('gulp-rigger'),
-
 		scss = r('gulp-sass'),
 		autoprefixer = r('gulp-autoprefixer'),
 		gcmq = r('gulp-group-css-media-queries'),
@@ -23,9 +21,20 @@
 		sourcemaps = r('gulp-sourcemaps'), //добавляют размер в два раза
 		del = r('del'),
 		img_min = r('gulp-imagemin'),
-		cache = r('gulp-cache'), //если нету то будет оч тормозить обработка картинок!прям пиздец как!
+		cache = r('gulp-cache'), //если нету то будет оч тормозить обработка картинок!прям огого как!
 		browserSync = r('browser-sync').create(),
+		gulpif = r('gulp-if'),
 		webp = r('gulp-webp');
+	let theEnd = true;
+
+	// const isProd = !isDev;
+	// const isDev = (process.argv.includes('--dev') !== -1);
+	// const isSync = (process.argv.includes('--sync') !== -1);
+	// "scripts": {
+	// 	"dev": "gulp  --dev --sync",
+	// 	"build": "gulp "
+	//   },//написать в package.json и можно вызывать npm run dev
+
 	// var options = {
 	// 	removeComments: false
 	// };
@@ -48,13 +57,15 @@
 	// });
 
 	gulp.task('browser-sync', () => {
-		browserSync.init({
-			server: {
-				baseDir: "./production",
-			},
-			port: 8008, //сменить порт3000 на какой хоч
-			notify: false // Отключаем уведомления			
-		});
+		if (theEnd) {
+			browserSync.init({
+				server: {
+					baseDir: "./production",
+				},
+				port: 8008, //сменить порт3000 на какой хоч
+				notify: false // Отключаем уведомления			
+			});
+		}
 	});
 	gulp.task('del', () => {
 		return del('production/*');
@@ -64,6 +75,7 @@
 		gulp.src('developer/scss/all.scss')
 			.pipe(changed('developer/css'))
 			.pipe(plumber())
+			// .on('error', console.error.bind(console))
 			.pipe(scss())
 			.pipe(gulp.dest('developer/css'))
 	});
@@ -79,7 +91,7 @@
 				browsers: ['> 0.1%'],
 				cascade: true
 			}))
-			// .pipe(sourcemaps.init())
+			.pipe(gulpif(theEnd, sourcemaps.init()))
 			.pipe(gcmq())
 			// .pipe(uncss({
 			// 	html: ['production/index.html'] //не работает
@@ -87,14 +99,14 @@
 			.pipe(cleanCSS({
 				level: 2
 			}))
-			// .pipe(sourcemaps.write())
+			.pipe(gulpif(theEnd, sourcemaps.write()))
 			// .pipe(plumber.stop())//не ясно зачем возвращать поведение по умолчанию
 			.pipe(gulp.dest('production/css'))
 			.pipe(filesize({
 				title: 'after',
 				showFiles: true
 			}))
-			.pipe(browserSync.stream());
+			.pipe(gulpif(theEnd, browserSync.stream()));
 	});
 	gulp.task('img_min', () => {
 		gulp.src('developer/img/*')
@@ -110,7 +122,7 @@
 				title: 'after',
 				showFiles: true
 			}))
-			.pipe(browserSync.stream());
+			.pipe(gulpif(theEnd, browserSync.stream()));
 	});
 
 	gulp.task('convert_webp', () => {
@@ -147,7 +159,7 @@
 				title: 'after',
 				showFiles: true
 			}))
-			.pipe(browserSync.stream());
+			.pipe(gulpif(theEnd, browserSync.stream()));
 	});
 	gulp.task('before_js_in_production', () => {
 		gulp.src('./developer/js/library_js/library/*.js')
@@ -192,7 +204,7 @@
 				title: 'after',
 				showFiles: true
 			}))
-			.pipe(browserSync.stream());
+			.pipe(gulpif(theEnd, browserSync.stream()));
 	});
 	gulp.task('watch', () => {
 		// watch('developer/html/**/*.html');
@@ -221,13 +233,14 @@
 	gulp.task('transfer_fonts', () => {
 		gulp.src('developer/fonts/*')
 			.pipe(changed('production'))
-			.pipe(gulp.dest('production'));
+			.pipe(gulp.dest('production/css'))
+			.pipe(gulpif(theEnd, browserSync.stream()));
 	});
 	gulp.task('transfer_favicon', () => {
 		gulp.src('developer/*.ico')
 			.pipe(changed('production'))
 			.pipe(gulp.dest('production'))
-			.pipe(browserSync.stream());
+			.pipe(gulpif(theEnd, browserSync.stream()));
 	});
 	gulp.task('default', ['del', 'img_min', 'browser-sync', 'html_include', 'html_min', 'scss', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'transfer_favicon', 'transfer_fonts', 'watch']);
 })(require);
