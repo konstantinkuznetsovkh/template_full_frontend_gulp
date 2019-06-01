@@ -25,7 +25,8 @@
 		browserSync = r('browser-sync').create(),
 		gulpif = r('gulp-if'),
 		webp = r('gulp-webp');
-	let theEnd = true;
+	let theEnd = true; //сработает
+	// let theEnd = false; //не сработает
 
 	// const isProd = !isDev;
 	// const isDev = (process.argv.includes('--dev') !== -1);
