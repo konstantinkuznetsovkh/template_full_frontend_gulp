@@ -235,3 +235,11 @@ header {
   display: block;
   position: relative;
 }
+
+// body {
+//   padding: 12px;
+//   padding-left: env(safe-area-inswt-left);
+//   padding-right: env(safe-area-inswt-right);
+//для любого стиля или можно ничего не писать они автоматически будут принимать безопасное расположение
+//из-за viewport-fit=cover
+// }
