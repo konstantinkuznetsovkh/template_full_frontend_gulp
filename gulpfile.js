@@ -131,8 +131,7 @@
 			.pipe(webp())
 			.pipe(gulp.dest('production'))
 	});
-
-	gulp.task('html_include', () => {
+	/*gulp.task('html_include', () => {
 		gulp.src(['developer/html/index.html'])
 			// .pipe(changed('developer/html/'))
 			.pipe(plumber())
@@ -141,7 +140,9 @@
 				basepath: '@file'
 			}))
 			.pipe(gulp.dest('developer'))
+			.pipe(gulpif(theEnd, browserSync.stream()));
 	});
+	
 	gulp.task('html_min', () => {
 		gulp.src('developer/index.html')
 			// .pipe(changed('production'))
@@ -155,6 +156,34 @@
 				removeComments: true
 			}))
 			// .pipe(sourcemaps.write())
+			.pipe(gulp.dest('production'))
+			.pipe(filesize({
+				title: 'after',
+				showFiles: true
+			}))
+			.pipe(gulpif(theEnd, browserSync.stream()));
+	});
+	
+	
+	*/
+	gulp.task('html', () => {
+		gulp.src(['developer/html/index.html'])
+			// .pipe(changed('developer/html/'))
+			.pipe(plumber())
+			.pipe(html_include({
+				prefix: '@!',
+				basepath: '@file'
+			}))
+			.pipe(plumber())
+			.pipe(gulpif(theEnd, sourcemaps.init()))
+			.pipe(filesize({
+				title: 'before',
+				showFiles: true
+			}))
+			.pipe(htmlnano({
+				removeComments: true
+			}))
+			.pipe(gulpif(theEnd, sourcemaps.write()))
 			.pipe(gulp.dest('production'))
 			.pipe(filesize({
 				title: 'after',
@@ -218,14 +247,14 @@
 		// watch('developer/fonts');
 		// watch('developer/img/*');
 		// watch('developer/fonts/*');
-
-		gulp.watch('developer/html/**/*.html', ['html_include']);
+		// gulp.watch('developer/html/**/*.html', ['html_include']);gulp.watch('developer/index.html', ['html_min']);
+		gulp.watch('developer/html/**/*.html', ['html']);
 		gulp.watch('developer/scss/**/*.scss', ['scss']);
 		gulp.watch('developer/css/**/*.css', ['css']);
 		gulp.watch(['developer/js/library_js/main.js', 'developer/js/library_js/conected.js'], ['before_js_in_production']);
 		gulp.watch('developer/js/library_js/main.js', ['before_2_js_in_production']);
 		gulp.watch('developer/js/main.js', ['js']);
-		gulp.watch('developer/index.html', ['html_min']);
+		// gulp.watch('developer/index.html', ['html_min']);
 		gulp.watch('developer/fonts', ['transfer_fonts']);
 		gulp.watch('developer/img/*', ['img_min']);
 		gulp.watch('developer/fonts/*', ['transfer_fonts']);
@@ -243,5 +272,5 @@
 			.pipe(gulp.dest('production'))
 			.pipe(gulpif(theEnd, browserSync.stream()));
 	});
-	gulp.task('default', ['del', 'img_min', 'browser-sync', 'html_include', 'html_min', 'scss', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'transfer_favicon', 'transfer_fonts', 'watch']);
+	gulp.task('default', ['del', 'img_min', 'browser-sync', 'html', 'scss', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'transfer_favicon', 'transfer_fonts', 'watch']);
 })(require);
