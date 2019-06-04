@@ -6,6 +6,7 @@
 		del = r('del'),
 		watch = r('gulp-watch'),
 		plumber = r('gulp-plumber'),
+		notify = r('gulp-notify'),
 		filesize = r('gulp-size'),
 		changed = r('gulp-changed'),
 		gulpif = r('gulp-if'),
@@ -56,7 +57,14 @@
 	// 		// tunnel: true, tunnel: "projectname", // Demonstration page: http://projectname.localtunnel.me
 	// 	});
 	// });
-
+	let onError = function (err) {
+		notify.onError({
+			title: "Error in " + err.plugin,
+			message: err.message,
+			sound: true // case sensitive
+		})(err);
+		this.emit('end');
+	};
 	gulp.task('browser-sync', () => {
 		if (theEnd) {
 			browserSync.init({
@@ -75,7 +83,9 @@
 	gulp.task('scss', () => {
 		gulp.src('developer/scss/all.scss')
 			.pipe(changed('developer/css'))
-			.pipe(plumber())
+			.pipe(plumber({
+				errorHandler: onError
+			}))
 			// .on('error', console.error.bind(console))
 			.pipe(scss())
 			.pipe(gulp.dest('developer/css'))
@@ -169,12 +179,16 @@
 	gulp.task('html', () => {
 		gulp.src(['developer/html/index.html'])
 			// .pipe(changed('developer/html/'))
-			.pipe(plumber())
+			.pipe(plumber({
+				errorHandler: onError
+			}))
 			.pipe(html_include({
 				prefix: '@!',
 				basepath: '@file'
 			}))
-			.pipe(plumber())
+			.pipe(plumber({
+				errorHandler: onError
+			}))
 			.pipe(gulpif(theEnd, sourcemaps.init()))
 			.pipe(filesize({
 				title: 'before',
@@ -204,6 +218,9 @@
 	gulp.task('before_2_js_in_production', () => {
 		gulp.src('./developer/js/library_js/main.js')
 			.pipe(changed('developer/js'))
+			.pipe(plumber({
+				errorHandler: onError
+			}))
 			.pipe(filesize({
 				title: 'before',
 				showFiles: true
@@ -219,7 +236,6 @@
 	});
 	gulp.task('js', () => {
 		gulp.src('developer/js/*.js')
-			.pipe(plumber())
 			.pipe(concat('main.js'))
 			.pipe(changed('production/js'))
 			// .pipe(sourcemaps.init())
@@ -272,5 +288,5 @@
 			.pipe(gulp.dest('production'))
 			.pipe(gulpif(theEnd, browserSync.stream()));
 	});
-	gulp.task('default', ['del', 'img_min', 'browser-sync', 'html', 'scss', 'css', 'before_js_in_production', 'before_2_js_in_production', 'js', 'transfer_favicon', 'transfer_fonts', 'watch']);
+	gulp.task('default', ['del', 'img_min', 'browser-sync', 'html', 'scss', 'before_js_in_production', 'before_2_js_in_production', 'js', 'transfer_favicon', 'transfer_fonts', 'watch']);
 })(require);
